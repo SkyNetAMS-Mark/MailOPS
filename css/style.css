@@ -1,0 +1,561 @@
+/* style.css - Mail Processing Dashboard Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#dateSelector {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-refresh, .btn-export {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-refresh {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-refresh:hover {
+    background-color: #45a049;
+}
+
+.btn-refresh:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.btn-export {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-export:hover {
+    background-color: #0b7dda;
+}
+
+.refresh-icon {
+    display: inline-block;
+    font-size: 18px;
+}
+
+.rotating {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Sections */
+.section {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Two column layout for PostNL and Carriers */
+.postnl-section {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+}
+
+.carriers-section {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 0;
+}
+
+.section-header {
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.red-header {
+    background-color: #dc3545;
+    color: white;
+}
+
+.red-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.date-display {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.bp-section .section-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Scrollable BP table container */
+.bp-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.bp-table-container table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f8f9fa;
+}
+
+.productivity-section .section-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Tables */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table.compact-table thead th,
+.data-table.compact-table tbody td,
+.data-table.compact-table tfoot td {
+    padding: 8px 10px;
+}
+
+.data-table thead th {
+    background-color: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #dee2e6;
+    font-size: 13px;
+}
+
+.data-table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 13px;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.data-table tfoot td {
+    padding: 12px;
+    font-weight: bold;
+    border-top: 2px solid #dee2e6;
+    background-color: #e9ecef;
+}
+
+.total-row {
+    background-color: #e9ecef;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-style: italic;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+}
+
+.error {
+    text-align: center;
+    padding: 20px;
+    color: #dc3545;
+    font-weight: bold;
+    background-color: #f8d7da;
+}
+
+/* Productivity Table with Gradient Color Coding */
+.productivity-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+.productivity-table thead th {
+    background-color: #343a40;
+    color: white;
+    padding: 6px 4px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    font-size: 10px;
+}
+
+.productivity-table tbody td {
+    padding: 6px 4px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Station name column */
+.productivity-table tbody td.station-name {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 10px;
+    border-right: 2px solid #343a40;
+}
+
+/* Gradient color coding for activity cells */
+.productivity-table tbody td.above-average {
+    background-color: #4CAF50;  /* Green for above average */
+    color: white;
+    font-weight: bold;
+}
+
+.productivity-table tbody td.below-average {
+    background-color: #FF9800;  /* Orange for below average */
+    color: white;
+    font-weight: bold;
+}
+
+.productivity-table tbody td.way-below-average {
+    background-color: #f44336;  /* Red for way below average */
+    color: white;
+    font-weight: bold;
+}
+
+.productivity-table tbody td.no-value {
+    background-color: #ffffff;  /* White/no color for zero values */
+    color: #999;
+    font-weight: normal;
+}
+
+/* Station total column */
+.productivity-table tbody td.station-total {
+    background-color: #e9ecef;
+    font-weight: bold;
+    border-left: 2px solid #343a40;
+}
+
+.productivity-table tbody td.station-total.above-average {
+    background-color: #81C784;
+    color: white;
+}
+
+.productivity-table tbody td.station-total.below-average {
+    background-color: #FFB74D;
+    color: white;
+}
+
+/* Totals row */
+.productivity-table tbody tr.totals-row {
+    border-top: 2px solid #343a40;
+}
+
+.productivity-table tbody tr.totals-row td {
+    font-weight: bold;
+    border-top: 2px solid #343a40;
+}
+
+.productivity-table tbody tr.totals-row td.station-name {
+    background-color: #343a40;
+    color: white;
+}
+
+#productivityData {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+/* Productivity Legend */
+.productivity-legend {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 12px;
+}
+
+.legend-title {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.color-box.above-average {
+    background-color: #4CAF50;
+}
+
+.color-box.below-average {
+    background-color: #FF9800;
+}
+
+.color-box.way-below-average {
+    background-color: #f44336;
+}
+
+.color-box.no-value {
+    background-color: #ffffff;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    border-top: 2px solid #e0e0e0;
+    color: #666;
+    font-size: 14px;
+}
+
+.update-label {
+    font-weight: bold;
+    color: #dc3545;
+    margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .controls {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    #dateSelector, .btn-refresh, .btn-export {
+        width: 100%;
+    }
+    
+    /* Stack sections on mobile */
+    .postnl-section,
+    .carriers-section {
+        width: 100%;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .data-table {
+        font-size: 12px;
+    }
+    
+    .data-table thead th,
+    .data-table tbody td,
+    .data-table tfoot td {
+        padding: 8px 6px;
+    }
+    
+    .bp-table-container {
+        max-height: 300px;
+    }
+    
+    .productivity-table {
+        font-size: 9px;
+    }
+    
+    .productivity-table thead th {
+        font-size: 8px;
+        padding: 4px 2px;
+    }
+    
+    .productivity-table tbody td {
+        padding: 4px 2px;
+    }
+    
+    .productivity-legend {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .legend-item {
+        font-size: 10px;
+    }
+.productivity-table tbody tr.separator-row td {
+    height: 5px;
+    background-color: #343a40;
+    padding: 0;
+    border: none;
+}
+
+/* Subtotals row for manual stations */
+.productivity-table tbody tr.subtotals-row {
+    background-color: #f0f0f0;
+    border-top: 2px solid #343a40;
+}
+
+.productivity-table tbody tr.subtotals-row td.station-name {
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+}
+
+/* Total cell styling */
+.productivity-table tbody td.total-cell {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+/* Station total with gradient colors */
+.productivity-table tbody td.station-total.way-below-average {
+    background-color: #ef5350;
+    color: white;
+}
+
+/* Updated legend with groups */
+.productivity-legend {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.legend-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 25px;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #dee2e6;
+}
+
+.legend-subtitle {
+    font-weight: bold;
+    color: #495057;
+    margin-right: 5px;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.color-box.above-average {
+    background-color: #4CAF50;
+}
+
+.color-box.below-average {
+    background-color: #FF9800;
+}
+
+.color-box.way-below-average {
+    background-color: #f44336;
+}
+
+.color-box.no-value {
+    background-color: #ffffff;
+}
+
+/* Responsive updates */
+@media (max-width: 768px) {
+    .productivity-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .legend-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 0;
+        width: 100%;
+    }
+}
